@@ -9,20 +9,39 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private ListView requestList;
+    private ArrayList<String> requestArrayList = new ArrayList<>();
+    private ArrayAdapter<String> requestAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        requestList = findViewById(R.id.requestList);
+        requestAdapter = new ArrayAdapter<>(this,android.R.layout.simple_expandable_list_item_1,requestArrayList);
+        requestList.setAdapter(requestAdapter);
+
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+
+        requestAdapter.notifyDataSetChanged();
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -34,9 +53,6 @@ public class HomeActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         NavigationView nav_view = findViewById(R.id.navigationView);
-
-        getSupportActionBar().setHomeButtonEnabled(false);
-
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

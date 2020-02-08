@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "283340746989",
+    "firebase_url": "https://liftcare-f9675.firebaseio.com",
+    "project_id": "liftcare-f9675",
+    "storage_bucket": "liftcare-f9675.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283340746989:android:2033cf7c9587f107b09ce4",
+        "android_client_info": {
+          "package_name": "ca.uottawa.cmcfa039.liftcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283340746989-snoa3pcetfqd7u5ik23n65eme2llaevj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.uottawa.cmcfa039.liftcare",
+            "certificate_hash": "7fe41a51244064df6bfb8cda4dbf8a6969b2a5f5"
+          }
+        },
+        {
+          "client_id": "283340746989-qb0a8aevt1h4hcj4q1gu3u3fitimgj7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1C06VKIps051gpN5PtE3HQuyxkRtQbaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283340746989-qb0a8aevt1h4hcj4q1gu3u3fitimgj7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
