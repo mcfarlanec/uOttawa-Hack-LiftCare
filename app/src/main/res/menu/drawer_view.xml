@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_helicopter"
+        android:title="@string/helicopter"
+        android:icon="@drawable/aircraft"
+
+        ></item>
+
+    <item android:id="@+id/nav_hospital"
+        android:title="@string/hospital"
+        android:icon="@drawable/ic_local_hospital_black_24dp"
+
+        ></item>
+
+</menu>
