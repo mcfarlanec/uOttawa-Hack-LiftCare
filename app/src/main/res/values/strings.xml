@@ -16,4 +16,5 @@
     <string name="menu_send">Send</string>
     <string name="helicopter">Helicopters</string>
     <string name="hospital">Hospitals</string>
+    <string name="request">Create a Request</string>
 </resources>

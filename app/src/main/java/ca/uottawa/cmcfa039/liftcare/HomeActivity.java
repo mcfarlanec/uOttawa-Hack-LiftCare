@@ -39,6 +39,14 @@ public class HomeActivity extends AppCompatActivity {
         requestArrayList.add("hi");
         requestArrayList.add("hi");
         requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
+        requestArrayList.add("hi");
 
         requestAdapter.notifyDataSetChanged();
 
