@@ -38,10 +38,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(new LatLng(lat1, long1));
         markerOptions.title(name1);
+        mMap.addMarker(markerOptions);
 
         MarkerOptions markerOptions2 = new MarkerOptions();
         markerOptions2.position(new LatLng(lat2, long2));
         markerOptions2.title(name2);
+        mMap.addMarker(markerOptions2);
     }
 
     @Override
