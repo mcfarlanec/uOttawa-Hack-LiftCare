@@ -28,7 +28,7 @@ public class Algorithm{
 
 		int index = 0;
 		if (temp.isEmpty()){
-			temp.add(request);
+			temp.add(0,request);
 		} else {
 			for (int i = 0; i < temp.size() -1; i ++){
 				if (temp.get(i).getPatient().getSeverity() == patient.getSeverity()){
