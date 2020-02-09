@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -27,6 +28,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(new LatLng(0.0, 0.0));
+        markerOptions.title("Marker");
     }
 
     @Override

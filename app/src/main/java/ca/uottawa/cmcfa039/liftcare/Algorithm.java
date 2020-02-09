@@ -14,7 +14,6 @@ public class Algorithm{
 		ArrayList<Patient> temp = new ArrayList<Patient>();
 		Patient patient = request.getPatient();
 
-		//is ground an option?
 		int category = patient.getCategory();
 		if (category == 1){
 			temp = emergent;

@@ -2,21 +2,23 @@ package ca.uottawa.cmcfa039.liftcare;
 
 public class Request{
     private Patient patient;
-    private boolean approved;
-    //current location
-    //desired hospital
+    private Route route;
 
     public Request(){
         this.patient = new Patient();
-        this.approved = false;
+        this.route = new Route();
     }
 
-    public Request(Patient patient){
+    public Request(Patient patient, Route route){
         this.patient = patient;
-        this.approved = false;
+        this.route = route;
     }
 
     public Patient getPatient() {
         return patient;
+    }
+
+    public Route getRoute() {
+        return route;
     }
 }
