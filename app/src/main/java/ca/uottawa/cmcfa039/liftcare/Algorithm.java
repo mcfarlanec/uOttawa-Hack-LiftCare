@@ -6,7 +6,6 @@ public class Algorithm{
 	ArrayList<Request> urgent = new ArrayList<>();
 	ArrayList<Request> scheduled = new ArrayList<>();
 	ArrayList<Request> routine = new ArrayList<>();
-	ArrayList<Request> ground = new ArrayList<>();
 
 	ArrayList<Request> masterList = new ArrayList<>();
 
@@ -27,12 +26,26 @@ public class Algorithm{
 			return masterList;
 		}
 
-		int i;
+		int index = 0;
 		if (temp.isEmpty()){
 			temp.add(request);
 		} else {
-			i = binarySearch(temp, patient, 0, temp.size());
-			temp.add(i, request);
+			for (int i = 0; i < temp.size() -1; i ++){
+				if (temp.get(i).getPatient().getSeverity() == patient.getSeverity()){
+					if (patient.getAge() > temp.get(i).getPatient().getAge()){
+						index = i;
+					} else {
+						index = i + 1;
+					}
+					break;
+				} else if (temp.get(i).getPatient().getSeverity() < patient.getSeverity() && temp.get(i+1).getPatient().getSeverity() > patient.getSeverity()) {
+					index = i;
+					break;
+				} else {
+					index = i;
+				}
+			}
+			temp.add(index, request);
 		}
 
 		if (category == 1){
@@ -41,7 +54,7 @@ public class Algorithm{
 			urgent = temp;
 		} else if (category == 3){
 			scheduled = temp;
-		} else if (category == 4){
+		} else {
 			routine = temp;
 		}
 
@@ -53,30 +66,6 @@ public class Algorithm{
 
 		return masterList;
 	}
-
-	private int binarySearch(ArrayList<Request> list, Patient patient, int l, int r){
-		int mid = 0;
-		if (r >= 1) {
-			mid = (l + (r-1))/2;
-
-			if (list.get(mid).getPatient().getSeverity() == patient.getSeverity()){
-				if (patient.getAge() > list.get(mid).getPatient().getAge()){
-					return mid;
-				} else {
-					return mid + 1;
-				}
-			}
-
-			if (list.get(mid).getPatient().getSeverity() > patient.getSeverity()){
-				return binarySearch(list, patient, l, mid-1);
-			}
-
-			return binarySearch(list, patient, mid+1, r);
-		}
-		return mid;
-	}
-
-	//possible list of helicopters
 
 	//remove/patient transported function
 	private void removeRequest(Request request){
@@ -92,6 +81,4 @@ public class Algorithm{
 		}
 		masterList.remove(request);
 	}
-
-	//next patient
 }
