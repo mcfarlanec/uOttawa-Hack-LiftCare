@@ -8,20 +8,20 @@ import com.google.android.gms.maps.model.LatLng;
 public class Helicopter{
     private final int SPEED = 260;
     private Patient patient;
-    private LatLng lastLocation;
+    private Hospital lastLocation;
     private Route route;
     private boolean onRoute;
 
     public Helicopter(){
         this.patient = new Patient();
-        this.lastLocation = new LatLng(45.399311,-75.648460);
+        this.lastLocation = new Hospital();
         this.route = new Route();
         this.onRoute = false;
     }
 
     public Helicopter(Patient patient, boolean onRoute){
         this.patient = new Patient();
-        this.lastLocation = new LatLng(45.399311,-75.648460);
+        this.lastLocation = new Hospital();
         this.route = new Route();
         this.onRoute = false;
     }
