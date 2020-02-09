@@ -67,7 +67,6 @@ public class Algorithm{
 		return masterList;
 	}
 
-	//remove/patient transported function
 	private void removeRequest(Request request){
 		int category = request.getPatient().getCategory();
 		if (category == 1){

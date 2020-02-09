@@ -100,6 +100,7 @@ public class HomeActivity extends AppCompatActivity {
                 Request request = dataSnapshot.getValue(Request.class);
                 superRequestArrayList = algo.receiveRequest(request);
                 requestArrayList = new ArrayList<>();
+                System.out.println(superRequestArrayList.size());
                 for (int i = 0; i < superRequestArrayList.size();i++){
                     requestArrayList.add(superRequestArrayList.get(i).toString());
                 }
