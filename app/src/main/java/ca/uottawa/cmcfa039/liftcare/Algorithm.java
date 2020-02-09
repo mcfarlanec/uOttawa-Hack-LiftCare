@@ -2,16 +2,16 @@ package ca.uottawa.cmcfa039.liftcare;
 import java.util.ArrayList;
 
 public class Algorithm{
-	ArrayList<Patient> emergent = new ArrayList<Patient>();
-	ArrayList<Patient> urgent = new ArrayList<Patient>();
-	ArrayList<Patient> scheduled = new ArrayList<Patient>();
-	ArrayList<Patient> routine = new ArrayList<Patient>();
-	ArrayList<Patient> ground = new ArrayList<Patient>();
+	ArrayList<Request> emergent = new ArrayList<>();
+	ArrayList<Request> urgent = new ArrayList<>();
+	ArrayList<Request> scheduled = new ArrayList<>();
+	ArrayList<Request> routine = new ArrayList<>();
+	ArrayList<Request> ground = new ArrayList<>();
 
-	ArrayList<Patient> masterList = new ArrayList<Patient>();
+	ArrayList<Request> masterList = new ArrayList<>();
 
-	private ArrayList<Patient> receiveRequest(Request request){
-		ArrayList<Patient> temp = new ArrayList<Patient>();
+	public ArrayList<Request> receiveRequest(Request request){
+		ArrayList<Request> temp = new ArrayList<>();
 		Patient patient = request.getPatient();
 
 		int category = patient.getCategory();
@@ -29,10 +29,10 @@ public class Algorithm{
 
 		int i;
 		if (temp.isEmpty()){
-			temp.add(patient);
+			temp.add(request);
 		} else {
 			i = binarySearch(temp, patient, 0, temp.size());
-			temp.add(i, patient);
+			temp.add(i, request);
 		}
 
 		if (category == 1){
@@ -45,7 +45,7 @@ public class Algorithm{
 			routine = temp;
 		}
 
-		masterList = new ArrayList<Patient>();
+		masterList = new ArrayList<Request>();
 		masterList.addAll(emergent);
 		masterList.addAll(urgent);
 		masterList.addAll(scheduled);
@@ -54,20 +54,20 @@ public class Algorithm{
 		return masterList;
 	}
 
-	private int binarySearch(ArrayList<Patient> list, Patient patient, int l, int r){
+	private int binarySearch(ArrayList<Request> list, Patient patient, int l, int r){
 		int mid = 0;
 		if (r >= 1) {
 			mid = (l + (r-1))/2;
 
-			if (list.get(mid).getSeverity() == patient.getSeverity()){
-				if (patient.getAge() > list.get(mid).getAge()){
+			if (list.get(mid).getPatient().getSeverity() == patient.getSeverity()){
+				if (patient.getAge() > list.get(mid).getPatient().getAge()){
 					return mid;
 				} else {
 					return mid + 1;
 				}
 			}
 
-			if (list.get(mid).getSeverity() > patient.getSeverity()){
+			if (list.get(mid).getPatient().getSeverity() > patient.getSeverity()){
 				return binarySearch(list, patient, l, mid-1);
 			}
 
@@ -79,18 +79,18 @@ public class Algorithm{
 	//possible list of helicopters
 
 	//remove/patient transported function
-	private void removePatient(Patient patient){
-		int category = patient.getCategory();
+	private void removeRequest(Request request){
+		int category = request.getPatient().getCategory();
 		if (category == 1){
-			emergent.remove(patient);
+			emergent.remove(request);
 		} else if (category == 2){
-			urgent.remove(patient);
+			urgent.remove(request);
 		} else if (category == 3){
-			scheduled.remove(patient);
+			scheduled.remove(request);
 		} else if (category == 4){
-			routine.remove(patient);
+			routine.remove(request);
 		}
-		masterList.remove(patient);
+		masterList.remove(request);
 	}
 
 	//next patient

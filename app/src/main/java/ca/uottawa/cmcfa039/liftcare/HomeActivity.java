@@ -11,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,8 +33,10 @@ public class HomeActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private ListView requestList;
     private ArrayList<String> requestArrayList = new ArrayList<>();
+    private ArrayList<Request> superRequestArrayList = new ArrayList<>();
     private ArrayAdapter<String> requestAdapter;
     private DatabaseReference mDatabaseRef;
+    private Algorithm algo = new Algorithm();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,22 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        NavigationView nav_view = findViewById(R.id.navigationView);
+        requestList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Request request = superRequestArrayList.get(position);
+                Intent i = new Intent(HomeActivity.this, MapActivity.class);
+                i.putExtra("latitude1", request.getRoute().getStartHospital().getLatitude());
+                i.putExtra("longitude1", request.getRoute().getStartHospital().getLongitude());
+                i.putExtra("latitude2", request.getRoute().getEndHospital().getLatitude());
+                i.putExtra("longitude2", request.getRoute().getEndHospital().getLongitude());
+                i.putExtra("hospital1", request.getRoute().getStartHospital().getName());
+                i.putExtra("hospital2", request.getRoute().getEndHospital().getName());
+                startActivity(i);
+            }
+        });
+
+        final NavigationView nav_view = findViewById(R.id.navigationView);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -79,7 +98,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 Request request = dataSnapshot.getValue(Request.class);
-                requestArrayList.add(request.toString());
+                superRequestArrayList = algo.receiveRequest(request);
+                requestArrayList = new ArrayList<>();
+                for (int i = 0; i < superRequestArrayList.size();i++){
+                    requestArrayList.add(superRequestArrayList.get(i).toString());
+                }
                 requestAdapter.notifyDataSetChanged();
 
             }
