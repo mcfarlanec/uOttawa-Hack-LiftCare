@@ -37,16 +37,16 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="75dp" />
 
                 <ListView
                     android:id="@+id/requestList"
                     android:layout_width="match_parent"
-                    android:layout_height="550dp" />
+                    android:layout_height="500dp" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    android:layout_height="25dp" />
 
                 <Button
                     android:id="@+id/requestBtn"

@@ -1,5 +1,7 @@
 package ca.uottawa.cmcfa039.liftcare;
 
+import androidx.annotation.NonNull;
+
 public class Request{
     private Patient patient;
     private Route route;

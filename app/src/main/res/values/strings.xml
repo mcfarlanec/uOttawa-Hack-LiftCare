@@ -17,4 +17,9 @@
     <string name="helicopter">Helicopters</string>
     <string name="hospital">Hospitals</string>
     <string name="request">Create a Request</string>
+    <string name="hospitalDescription">Hospitals</string>
+    <string name="hospitalButton">Create new Hospital</string>
+    <string name="hospitalName">Enter the hospital name</string>
+    <string name="hospitalLat">Enter the latitude</string>
+    <string name="hospitalLong">Enter the longitude</string>
 </resources>
