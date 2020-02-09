@@ -50,7 +50,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions2.title(name2);
         mMap.addMarker(markerOptions2);
 
-        point = CameraUpdateFactory.newLatLngZoom(new LatLng(lat1, long1), 11.0f);
+        point = CameraUpdateFactory.newLatLngZoom(new LatLng(lat1, long1), 8.0f);
         mMap.moveCamera(point);
         mMap.animateCamera(point);
     }

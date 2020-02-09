@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestActivity"></activity>
+        <activity android:name=".RequestActivity"
+            android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".NewHospitalActivity"
             android:parentActivityName=".HospitalActivity"></activity>
@@ -39,6 +40,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".MapActivity" />
+
     </application>
 
 </manifest>

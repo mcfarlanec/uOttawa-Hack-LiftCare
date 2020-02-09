@@ -9,9 +9,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,7 +48,29 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         requestList = findViewById(R.id.requestList);
-        requestAdapter = new ArrayAdapter<>(this,android.R.layout.simple_expandable_list_item_1,requestArrayList);
+        requestAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,requestArrayList){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                if(superRequestArrayList.get(position).getPatient().getSeverity() > 7.5){
+                    view.setBackgroundColor(Color.parseColor("#FF3D3D"));
+                }
+
+                else if(superRequestArrayList.get(position).getPatient().getSeverity() > 5){
+                    view.setBackgroundColor(Color.parseColor("#FA9149"));
+                }
+
+                else if(superRequestArrayList.get(position).getPatient().getSeverity() > 2.5){
+                    view.setBackgroundColor(Color.parseColor("#FFD587"));
+                } else {
+                    view.setBackgroundColor(Color.parseColor("#61988E"));
+                }
+
+
+                return view;
+            }
+        };
         requestList.setAdapter(requestAdapter);
 
         requestAdapter.notifyDataSetChanged();

@@ -125,7 +125,9 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:text="@string/request"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
