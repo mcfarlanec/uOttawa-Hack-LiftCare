@@ -3,6 +3,7 @@ package ca.uottawa.cmcfa039.liftcare;
 public class Request{
     private Patient patient;
     private boolean approved;
+    //current location
     //desired hospital
 
     public Request(){
