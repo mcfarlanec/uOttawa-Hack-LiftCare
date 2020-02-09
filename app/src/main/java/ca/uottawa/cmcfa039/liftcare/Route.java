@@ -22,21 +22,6 @@ public class Route{
         this.mins = (distance/(72.22222222))/60;
     }
 
-    public Hospital getStartHospital(){
-        return startPoint;
-    }
-    public Hospital getEndHospital(){
-        return endPoint;
-    }
-
-    public LatLng getEndPoint() {
-        return endPoint.getLocation();
-    }
-
-    public LatLng getStartPoint() {
-        return startPoint.getLocation();
-    }
-
     private double calculateDistance(LatLng start, LatLng end){
         final int R = 6371;
         double latDist = Math.toRadians(end.latitude - start.latitude);
@@ -50,11 +35,35 @@ public class Route{
         return Math.sqrt(distance);
     }
 
+    public Hospital getEndPoint() {
+        return endPoint;
+    }
+
+    public Hospital getStartPoint() {
+        return startPoint;
+    }
+
     public double getDistance() {
         return distance;
     }
 
     public double getMins() {
         return mins;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setEndPoint(Hospital endPoint) {
+        this.endPoint = endPoint;
+    }
+
+    public void setMins(double mins) {
+        this.mins = mins;
+    }
+
+    public void setStartPoint(Hospital startPoint) {
+        this.startPoint = startPoint;
     }
 }

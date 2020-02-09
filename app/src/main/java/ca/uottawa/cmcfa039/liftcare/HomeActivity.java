@@ -64,12 +64,12 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Request request = superRequestArrayList.get(position);
                 Intent i = new Intent(HomeActivity.this, MapActivity.class);
-                i.putExtra("latitude1", request.getRoute().getStartHospital().getLatitude());
-                i.putExtra("longitude1", request.getRoute().getStartHospital().getLongitude());
-                i.putExtra("latitude2", request.getRoute().getEndHospital().getLatitude());
-                i.putExtra("longitude2", request.getRoute().getEndHospital().getLongitude());
-                i.putExtra("hospital1", request.getRoute().getStartHospital().getName());
-                i.putExtra("hospital2", request.getRoute().getEndHospital().getName());
+                i.putExtra("latitude1", request.getRoute().getStartPoint().getLatitude());
+                i.putExtra("longitude1", request.getRoute().getStartPoint().getLongitude());
+                i.putExtra("latitude2", request.getRoute().getEndPoint().getLatitude());
+                i.putExtra("longitude2", request.getRoute().getEndPoint().getLongitude());
+                i.putExtra("hospital1", request.getRoute().getStartPoint().getName());
+                i.putExtra("hospital2", request.getRoute().getEndPoint().getName());
                 startActivity(i);
             }
         });
