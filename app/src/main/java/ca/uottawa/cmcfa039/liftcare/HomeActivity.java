@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private ArrayList<Request> superRequestArrayList = new ArrayList<>();
     private ArrayAdapter<String> requestAdapter;
     private DatabaseReference mDatabaseRef;
+    private Button requestButton;
     private Algorithm algo = new Algorithm();
 
     @Override
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         requestList.setAdapter(requestAdapter);
 
         requestAdapter.notifyDataSetChanged();
+        requestButton = findViewById(R.id.requestBtn);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -99,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 Request request = dataSnapshot.getValue(Request.class);
                 superRequestArrayList = algo.receiveRequest(request);
-                requestArrayList = new ArrayList<>();
+                requestArrayList.clear();
                 System.out.println(superRequestArrayList.size());
                 for (int i = 0; i < superRequestArrayList.size();i++){
                     requestArrayList.add(superRequestArrayList.get(i).toString());
@@ -126,6 +129,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        requestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,RequestActivity.class));
             }
         });
 

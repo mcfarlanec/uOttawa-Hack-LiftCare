@@ -22,4 +22,8 @@
     <string name="hospitalName">Enter the hospital name</string>
     <string name="hospitalLat">Enter the latitude</string>
     <string name="hospitalLong">Enter the longitude</string>
+    <string name="check1">Emergent</string>
+    <string name="check2">Urgent</string>
+    <string name="check3">Scheduled</string>
+    <string name="check4">Routine</string>
 </resources>

@@ -25,8 +25,8 @@ public class Request{
     }
 
     public String toString(){
-        return "Patient Name: " + patient.getName() + " Start Hospital: " + route.getStartPoint().getName() + " Destination: "
-                + route.getEndPoint().getName() + " Distance: " + route.getDistance()/1000 + " Flight Time: "
-                + route.getMins();
+        return "Patient : " + patient.getName() + " Start : " + route.getStartPoint().getName() + " Destination: "
+                + route.getEndPoint().getName() + " Distance: " + Math.round(route.getDistance()/1000) + "km Flight Time: "
+                + Math.round(route.getMins()+2) + " minutes";
     }
 }

@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -28,6 +31,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     Double long2;
     String name1;
     String name2;
+    CameraUpdate point;
+
 
     private Boolean permissionGranted = false;
 
@@ -44,12 +49,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions2.position(new LatLng(lat2, long2));
         markerOptions2.title(name2);
         mMap.addMarker(markerOptions2);
+
+        point = CameraUpdateFactory.newLatLngZoom(new LatLng(lat1, long1), 11.0f);
+        mMap.moveCamera(point);
+        mMap.animateCamera(point);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        initMap();
+
         Intent i = getIntent();
         lat1 = i.getDoubleExtra("latitude1", -1);
         long1 = i.getDoubleExtra("longitude1", -1);
@@ -58,7 +70,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         name1 = i.getStringExtra("hospital1");
         name2 = i.getStringExtra("hospital2");
 
-        getLocationPermission();
     }
 
     private void initMap() {
@@ -67,35 +78,4 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(MapActivity.this);
     }
 
-    private void getLocationPermission() {
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            if (ContextCompat.checkSelfPermission(this.getApplicationContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                permissionGranted = true;
-            } else {
-                ActivityCompat.requestPermissions(this, permissions, 1);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        permissionGranted = false;
-
-        switch (requestCode){
-            case 1: {
-                if(grantResults.length > 0){
-                    for (int i = 0; i < grantResults.length; i++){
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED){
-                            permissionGranted = false;
-                            return;
-                        }
-                    }
-                    permissionGranted = true;
-                    initMap();
-                }
-            }
-        }
-    }
 }
