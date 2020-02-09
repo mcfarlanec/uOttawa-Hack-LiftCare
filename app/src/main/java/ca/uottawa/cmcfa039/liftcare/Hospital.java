@@ -21,11 +21,6 @@ public class Hospital{
         this.longitude = lng;
     }
 
-
-    public LatLng getLocation() {
-        return new LatLng(latitude, longitude);
-    }
-
     public String getName() {
         return name;
     }
@@ -36,11 +31,6 @@ public class Hospital{
 
     public Double getLongitude() {
         return longitude;
-    }
-
-    public void setLocation(Double latitude, Double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
     public void setLatitude(Double latitude) {

@@ -18,7 +18,7 @@ public class Route{
     public Route(Hospital start, Hospital end){
         this.startPoint = start;
         this.endPoint = end;
-        this.distance = calculateDistance(start.getLocation(), end.getLocation());
+        this.distance = calculateDistance(new LatLng(start.getLatitude(), start.getLongitude()), new LatLng(end.getLatitude(), end.getLongitude()));
         this.mins = (distance/(72.22222222))/60;
     }
 

@@ -58,7 +58,7 @@ public class Algorithm{
 			routine = temp;
 		}
 
-		masterList = new ArrayList<Request>();
+		masterList = new ArrayList<>();
 		masterList.addAll(emergent);
 		masterList.addAll(urgent);
 		masterList.addAll(scheduled);
