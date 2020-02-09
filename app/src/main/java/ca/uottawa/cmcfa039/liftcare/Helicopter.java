@@ -30,7 +30,7 @@ public class Helicopter{
         lastLocation = this.route.getEndPoint();
         this.route = route;
     }
-    
+
     public boolean getOnRoute() {
         return onRoute;
     }

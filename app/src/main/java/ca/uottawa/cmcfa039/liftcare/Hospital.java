@@ -20,4 +20,12 @@ public class Hospital{
         this.name = name;
         this.location = latLng;
     }
+
+    public LatLng getLocation() {
+        return location;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

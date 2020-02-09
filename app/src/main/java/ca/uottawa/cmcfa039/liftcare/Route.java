@@ -3,31 +3,38 @@ package ca.uottawa.cmcfa039.liftcare;
 import com.google.android.gms.maps.model.LatLng;
 
 public class Route{
-    private LatLng startPoint;
-    private LatLng endPoint;
+    private Hospital startPoint;
+    private Hospital endPoint;
     private double distance;
     private double mins;
 
     public Route(){
-        this.startPoint = new LatLng(0.0, 0.0);
-        this.endPoint = new LatLng(0.0, 0.0);
+        this.startPoint = new Hospital();
+        this.endPoint = new Hospital();
         this.distance = 0.0;
         this.mins = 0;
     }
 
-    public Route(LatLng start, LatLng end){
+    public Route(Hospital start, Hospital end){
         this.startPoint = start;
         this.endPoint = end;
-        this.distance = calculateDistance(start, end);
+        this.distance = calculateDistance(start.getLocation(), end.getLocation());
         this.mins = (distance/(72.22222222))/60;
     }
 
-    public LatLng getEndPoint() {
+    public Hospital getStartHospital(){
+        return startPoint;
+    }
+    public Hospital getEndHospital(){
         return endPoint;
     }
 
+    public LatLng getEndPoint() {
+        return endPoint.getLocation();
+    }
+
     public LatLng getStartPoint() {
-        return startPoint;
+        return startPoint.getLocation();
     }
 
     private double calculateDistance(LatLng start, LatLng end){
@@ -41,5 +48,13 @@ public class Route{
         double distance = R * c * 1000; // convert to meters
         distance = Math.pow(distance, 2);
         return Math.sqrt(distance);
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public double getMins() {
+        return mins;
     }
 }

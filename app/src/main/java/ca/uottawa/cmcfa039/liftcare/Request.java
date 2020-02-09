@@ -21,4 +21,11 @@ public class Request{
     public Route getRoute() {
         return route;
     }
+
+    public String toString(){
+        return "The patient," + patient.getName() + " is a severity of " + patient.getSeverity() + " and is " +
+                patient.getAge() + " years of age. They are being moved from " + route.getStartHospital().getName() + " to "
+                + route.getEndHospital().getName() + ". This trip is " + route.getDistance()/1000 + "kilometers and will take "
+                + route.getMins() + " minutes.";
+    }
 }
