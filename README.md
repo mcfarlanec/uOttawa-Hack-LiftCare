@@ -1,6 +1,6 @@
 # uOttawa-Hack-LiftCare
 
-#LiftCare
+## LiftCare
 
 Helicopter dispatch and coordination android app. Built with Java, Google Maps API and Google Firebase Realtime Database.
 Allows users to create requests for medical ambulances, automatically sorts and organizes patients based on medical status.
