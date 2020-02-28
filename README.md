@@ -12,3 +12,8 @@ Built for uOttawaHack3, placed in the top 20 teams and won the Wolfram Award.
 
 Devpost:
 https://devpost.com/software/liftcare/joins/LBT5pXO6mNjfNgMauu7eBQ
+
+TODO: 
+- improve helicopter matching algorithm
+- realtime locations of in progress dispatches
+- polish UI
